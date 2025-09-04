@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Saimum! 🎉</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            background: radial-gradient(circle, rgba(255,200,221,1) 0%, rgba(255,105,180,1) 100%);
+            background-attachment: fixed;
+        }
+
+        .animated-text {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(30, end) forwards,
+                       fade-in 1s ease-in-out;
+        }
+
+        .fade-in-text {
+            animation: fade-in 2s ease-in-out forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stylish-text {
+            font-family: 'Pacifico', cursive;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .heart-beat {
+            animation: heart-beat 1.5s infinite;
+        }
+        @keyframes heart-beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .next-button {
+            position: absolute;
+            bottom: 5vh;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .next-button:hover {
+            transform: translateX(-50%) scale(1.05);
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: confetti-fall 5s linear infinite;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-10vh); opacity: 1; }
+            100% { transform: translateY(110vh); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body class="overflow-hidden">
+
+    <!-- Confetti animation layer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = `${Math.random() * 5}s`;
+                confetti.style.animationDuration = `${5 + Math.random() * 5}s`;
+                document.body.appendChild(confetti);
+            }
+        });
+    </script>
+
+    <!-- Page 1 -->
+    <div id="page1" class="page flex-col" style="display: flex;">
+        <h1 class="text-6xl md:text-8xl font-bold stylish-text heart-beat">
+            <span class="text-red-500">✨</span><span class="text-pink-500">💖</span> Happy Birthday, Saimum! <span class="text-pink-500">💖</span><span class="text-red-500">✨</span>
+        </h1>
+        <button id="next1" class="next-button px-6 py-3 bg-purple-500 text-white rounded-full shadow-lg hover:bg-purple-600 transition-colors">
+            Next
+        </button>
+    </div>
+
+    <!-- Page 2 -->
+    <div id="page2" class="page">
+        <p class="text-3xl md:text-5xl stylish-text animated-text">
+            I like you. But I don't talk to you.
+            <br><br>
+            When I see you in front of me I feel nervous.
+            <br><br>
+            But I truly love you. I don't know if you like me or not.
+            <br><br>
+            But I always like you.
+        </p>
+        <button id="next2" class="next-button px-6 py-3 bg-purple-500 text-white rounded-full shadow-lg hover:bg-purple-600 transition-colors">
+            Next
+        </button>
+    </div>
+
+    <!-- Page 3 -->
+    <div id="page3" class="page">
+        <p class="text-4xl md:text-6xl stylish-text fade-in-text">
+            If I say I love you, what will be your answer??
+        </p>
+    </div>
+
+    <script>
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+        const page3 = document.getElementById('page3');
+        const next1 = document.getElementById('next1');
+        const next2 = document.getElementById('next2');
+
+        next1.addEventListener('click', () => {
+            page1.style.display = 'none';
+            page2.style.display = 'flex';
+        });
+
+        next2.addEventListener('click', () => {
+            page2.style.display = 'none';
+            page3.style.display = 'flex';
+        });
+    </script>
+</body>
+</html>
+
